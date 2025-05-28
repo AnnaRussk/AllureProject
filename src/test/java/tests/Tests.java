@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -22,16 +23,27 @@ public class Tests {
     public static void setup() {
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
+
+        addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true));
     }
 
+    @Epic("DemoQA Tests")
+    @Feature("Text Box")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("anna")
     @Test
     public void textBoxTest_withListener() {
-        addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
         open(url);
         elements.openTextBoxSection();
         elements.fillAndSubmitTextBox("Какое-то Имя");
     }
 
+    @Epic("DemoQA Tests")
+    @Feature("Check Box")
+    @Severity(SeverityLevel.MINOR)
+    @Owner("anna")
     @Test
     public void checkBoxTest_withLambdaSteps() {
         step("Открыть сайт", () -> open(url));
@@ -41,6 +53,10 @@ public class Tests {
         });
     }
 
+    @Epic("DemoQA Tests")
+    @Feature("Elements Section")
+    @Owner("anna")
+    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void practiceForm_withStepsAnnotations() {
         open(url);
