@@ -29,10 +29,6 @@ public class Tests {
                 .savePageSource(true));
     }
 
-    @Epic("DemoQA Tests")
-    @Feature("Text Box")
-    @Severity(SeverityLevel.NORMAL)
-    @Owner("anna")
     @Test
     public void textBoxTest_withListener() {
         open(url);
@@ -53,10 +49,6 @@ public class Tests {
         });
     }
 
-    @Epic("DemoQA Tests")
-    @Feature("Elements Section")
-    @Owner("anna")
-    @Severity(SeverityLevel.CRITICAL)
     @Test
     public void practiceForm_withStepsAnnotations() {
         open(url);
